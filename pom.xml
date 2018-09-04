@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>gs-remover</groupId>
+  <artifactId>gs-remover</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+    <groupId>it.geosolutions</groupId>
+    <artifactId>geoserver-manager</artifactId>
+    <version>1.7.0</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.25</version>
+</dependency>
+<!-- <dependency>
+    <groupId>jdom</groupId>
+    <artifactId>jdom</artifactId>
+    <version>1.1</version>
+</dependency>
+<dependency>
+    <groupId>commons-httpclient</groupId>
+    <artifactId>commons-httpclient</artifactId>
+    <version>3.1</version>
+</dependency> -->
+  </dependencies>
+  <repositories>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>boundless</id>
+			<name>Boundless Maven Repository</name>
+			<url>http://repo.boundlessgeo.com/main</url>
+		</repository>
+	</repositories>
+	<build>
+    <plugins>
+      <!-- any other plugins -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+         	<archive>
+                <manifest>
+                    <mainClass>
+                        org.remover.removeTool
+                    </mainClass>
+                </manifest>
+            </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
